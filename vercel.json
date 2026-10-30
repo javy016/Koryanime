@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/webs/serie",
+      "destination": "/webs/serie.html"
+    },
+    {
+      "source": "/webs/episodio",
+      "destination": "/webs/episodio.html"
+    },
+    {
+      "source": "/webs/catalogo",
+      "destination": "/webs/catalogo.html"
+    }
+  ]
+}
