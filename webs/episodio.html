@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor - Koryanime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+    <!-- HEADER COMPLETO -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img id="logo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Koryanime Logo" style="height: 28px;">
+                </a>
+            </div>
+            
+            <form class="search-container" action="catalogo" method="GET">
+                <i class="ph ph-magnifying-glass search-icon"></i>
+                <input type="text" name="buscar" placeholder="Buscar anime..." class="search-input">
+                <a href="catalogo?filtros=abiertos" class="btn-filtros" style="text-decoration: none;">
+                    <i class="ph ph-faders"></i> Filtros
+                </a>
+            </form>
+
+            <nav class="header-nav">
+                <a href="#" class="nav-link"><i class="ph ph-discord-logo" style="color: #5865F2;"></i> Discord</a>
+                <a href="#" class="nav-link"><i class="ph ph-calendar-blank"></i> Horario</a>
+                <a href="catalogo" class="nav-link"><i class="ph ph-books"></i> Catalogo de Animes</a>
+                
+                <button class="icon-btn" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
+
+                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
+                    <i id="icon-sun" class="ph ph-sun theme-icon active"></i>
+                    <i id="icon-moon" class="ph ph-moon theme-icon"></i>
+                </button>
+
+                <div class="user-menu-container">
+                    <button id="user-btn" class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff" alt="Usuario" class="user-avatar">
+                        <i class="ph ph-caret-down chevron-down"></i>
+                    </button>
+
+                    <div id="user-dropdown" class="user-dropdown">
+                        <div class="user-info-header">
+                            <div class="user-avatar-circle">
+                                <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff" alt="Usuario">
+                            </div>
+                            <div class="user-info-text">
+                                <strong>destrox01</strong>
+                                <span>Mi cuenta</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="ph ph-list-dashes"></i> Mis Listas</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="ph ph-sign-out"></i> Cerrar sesión</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO DEL REPRODUCTOR -->
+    <main class="main-content player-layout">
+        
+        <!-- Columna Izquierda: Video y Comentarios -->
+        <div class="player-main">
+            <div class="video-container">
+                <!-- Video (Se carga dinámicamente) -->
+                <iframe id="video-player" src="" title="Reproductor" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <!-- CONTROLES (Solo Anterior y Siguiente) -->
+            <div class="player-controls">
+                <div class="nav-buttons">
+                    <a href="#" id="btn-prev-ep" class="btn-secondary"><i class="ph ph-caret-left"></i> Anterior</a>
+                    <a href="#" id="btn-next-ep" class="btn-secondary">Siguiente <i class="ph ph-caret-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Información inferior (Aquí JS inyecta el botón de Visto) -->
+            <div class="episode-info-bottom" id="episode-info-bottom"></div>
+        </div>
+
+        <!-- Columna Derecha: Lista de Episodios -->
+        <aside class="player-sidebar">
+            <div class="sidebar-header">
+                <span>Estás viendo</span>
+                <h3 id="sidebar-ep-title">Episodio 1</h3>
+            </div>
+            <div class="episode-numbers-grid" id="sidebar-episodes-grid">
+                <!-- JS inyecta los números de episodio aquí -->
+            </div>
+        </aside>
+        
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="../js/tema.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/episodio.js"></script>
+</body>
+</html>

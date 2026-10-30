@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koryanime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img id="logo-koryanime" src="./Imagenes/logos/logo_oscuro.png" alt="Koryanime Logo"
+                        style="height: 28px;">
+                </a>
+            </div>
+
+            <form class="search-container" action="webs/catalogo.html" method="GET">
+                <i class="ph ph-magnifying-glass search-icon"></i>
+                <input type="text" name="buscar" placeholder="Buscar anime..." class="search-input">
+                <a href="webs/catalogo?filtros=abiertos" class="btn-filtros" style="text-decoration: none;">
+                    <i class="ph ph-faders"></i> Filtros
+                </a>
+            </form>
+
+            <nav class="header-nav">
+                <a href="#" class="nav-link"><i class="ph ph-discord-logo" style="color: #5865F2;"></i> Discord</a>
+                <a href="#" class="nav-link"><i class="ph ph-calendar-blank"></i> Horario</a>
+                <a href="webs/catalogo.html" class="nav-link"><i class="ph ph-books"></i> Catalogo de Animes</a>
+
+                <button class="icon-btn" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
+
+                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
+                    <i id="icon-sun" class="ph ph-sun theme-icon active"></i>
+                    <i id="icon-moon" class="ph ph-moon theme-icon"></i>
+                </button>
+
+                <div class="user-menu-container">
+                    <button id="user-btn" class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff" alt="Usuario"
+                            class="user-avatar">
+                        <i class="ph ph-caret-down chevron-down"></i>
+                    </button>
+
+                    <div id="user-dropdown" class="user-dropdown">
+                        <div class="user-info-header">
+                            <div class="user-avatar-circle">
+                                <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff"
+                                    alt="Usuario">
+                            </div>
+                            <div class="user-info-text">
+                                <strong>destrox01</strong>
+                                <span>Mi cuenta</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="ph ph-list-dashes"></i> Mis Listas</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="ph ph-sign-out"></i> Cerrar sesión</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-carousel" id="hero-carousel"></div>
+            <button class="carousel-btn prev" id="btn-prev">❮</button>
+            <button class="carousel-btn next" id="btn-next">❯</button>
+        </section>
+
+        <section class="trending-section">
+            <div class="section-header">
+                <h2>Tendencias</h2>
+                <a href="webs/catalogo.html" class="ver-todo">Ver todo →</a>
+            </div>
+            <div class="anime-grid" id="trending-grid"></div>
+        </section>
+
+        <section class="recent-episodes-section">
+            <div class="section-header">
+                <div>
+                    <h2>Episodios</h2>
+                    <p class="subtitle">RECIENTEMENTE ACTUALIZADO</p>
+                </div>
+            </div>
+            <div class="episodes-grid" id="recent-episodes-grid"></div>
+        </section>
+    </main>
+
+    <script src="js/tema.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

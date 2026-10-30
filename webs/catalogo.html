@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Koryanime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img id="logo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Koryanime Logo"
+                        style="height: 28px;">
+                </a>
+            </div>
+
+            <form class="search-container" action="catalogo.html" method="GET">
+                <i class="ph ph-magnifying-glass search-icon"></i>
+                <input type="text" name="buscar" placeholder="Buscar anime..." class="search-input">
+
+                <!-- Este botón solo funciona dentro del catálogo para abrir/cerrar -->
+                <button type="button" id="toggle-filters-btn" class="btn-filtros">
+                    <i class="ph ph-faders"></i> Filtros
+                </button>
+            </form>
+
+            <nav class="header-nav">
+                <a href="#" class="nav-link"><i class="ph ph-discord-logo" style="color: #5865F2;"></i> Discord</a>
+                <a href="#" class="nav-link"><i class="ph ph-calendar-blank"></i> Horario</a>
+                <a href="catalogo.html" class="nav-link"><i class="ph ph-books"></i> Catalogo de Animes</a>
+
+                <button class="icon-btn" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
+
+                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
+                    <i id="icon-sun" class="ph ph-sun theme-icon active"></i>
+                    <i id="icon-moon" class="ph ph-moon theme-icon"></i>
+                </button>
+
+                <div class="user-menu-container">
+                    <button id="user-btn" class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff" alt="Usuario"
+                            class="user-avatar">
+                        <i class="ph ph-caret-down chevron-down"></i>
+                    </button>
+
+                    <div id="user-dropdown" class="user-dropdown">
+                        <div class="user-info-header">
+                            <div class="user-avatar-circle">
+                                <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff"
+                                    alt="Usuario">
+                            </div>
+                            <div class="user-info-text">
+                                <strong>destrox01</strong>
+                                <span>Mi cuenta</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="ph ph-list-dashes"></i> Mis Listas</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="ph ph-sign-out"></i> Cerrar sesión</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="section-header" style="margin-top: 2rem; margin-bottom: 1.5rem;">
+            <h2 id="titulo-catalogo">Catálogo de Animes</h2>
+        </div>
+
+        <!-- PANEL DE FILTROS (Oculto por defecto) -->
+        <div id="panel-filtros" class="panel-filtros hidden">
+
+
+            <!-- Barra de Búsqueda por Letra -->
+            <div class="alphabet-filter" id="alphabet-filter">
+                <button class="alpha-btn active" data-letter="all">#</button>
+                <button class="alpha-btn" data-letter="A">A</button>
+                <button class="alpha-btn" data-letter="B">B</button>
+                <button class="alpha-btn" data-letter="C">C</button>
+                <button class="alpha-btn" data-letter="D">D</button>
+                <button class="alpha-btn" data-letter="E">E</button>
+                <button class="alpha-btn" data-letter="F">F</button>
+                <button class="alpha-btn" data-letter="G">G</button>
+                <button class="alpha-btn" data-letter="H">H</button>
+                <button class="alpha-btn" data-letter="I">I</button>
+                <button class="alpha-btn" data-letter="J">J</button>
+                <button class="alpha-btn" data-letter="K">K</button>
+                <button class="alpha-btn" data-letter="L">L</button>
+                <button class="alpha-btn" data-letter="M">M</button>
+                <button class="alpha-btn" data-letter="N">N</button>
+                <button class="alpha-btn" data-letter="O">O</button>
+                <button class="alpha-btn" data-letter="P">P</button>
+                <button class="alpha-btn" data-letter="Q">Q</button>
+                <button class="alpha-btn" data-letter="R">R</button>
+                <button class="alpha-btn" data-letter="S">S</button>
+                <button class="alpha-btn" data-letter="T">T</button>
+                <button class="alpha-btn" data-letter="U">U</button>
+                <button class="alpha-btn" data-letter="V">V</button>
+                <button class="alpha-btn" data-letter="W">W</button>
+                <button class="alpha-btn" data-letter="X">X</button>
+                <button class="alpha-btn" data-letter="Y">Y</button>
+                <button class="alpha-btn" data-letter="Z">Z</button>
+            </div>
+
+            <!-- Filtros Desplegables -->
+            <div class="advanced-filters">
+                <select id="filter-type" class="filter-select">
+                    <option value="">Tipo: Seleccionar</option>
+                    <option value="TV Anime">TV Anime</option>
+                    <option value="Película">Película</option>
+                    <option value="OVA">OVA</option>
+                </select>
+
+                <select id="filter-genre" class="filter-select">
+                    <option value="">Género: Seleccionar</option>
+                    <option value="Acción">Acción</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasía">Fantasía</option>
+                    <option value="Sobrenatural">Sobrenatural</option>
+                </select>
+
+                <select id="filter-year" class="filter-select">
+                    <option value="">Año: Seleccionar</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+
+                <select id="filter-status" class="filter-select">
+                    <option value="">Estado: Seleccionar</option>
+                    <option value="En emisión">En emisión</option>
+                    <option value="Finalizado">Finalizado</option>
+                    <option value="Próximamente">Próximamente</option> <!-- NUEVO -->
+                </select>
+
+                <button id="apply-filters" class="btn-apply-filters">Filtrar</button>
+            </div>
+        </div>
+
+        <!-- Resultados y Ordenación -->
+        <div class="results-header">
+            <span id="results-count">0 Resultados</span>
+            <div class="sort-container">
+                <span>Ordenar por:</span>
+                <select id="sort-order" class="sort-select">
+                    <option value="default">Predeterminado</option>
+                    <option value="rating">Mejor puntuados</option>
+                    <option value="year">Más recientes</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grid de Animes -->
+        <div class="anime-grid" id="catalogo-grid"></div>
+    </main>
+
+    <script src="../js/tema.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/catalogo.js"></script>
+</body>
+
+</html>

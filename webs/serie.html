@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Serie - Koryanime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- LIBRERÍA DE ICONOS -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img id="logo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Koryanime Logo"
+                        style="height: 28px;">
+                </a>
+            </div>
+
+            <form class="search-container" action="catalogo.html" method="GET"> <!-- En index -->
+                <i class="ph ph-magnifying-glass search-icon"></i>
+                <input type="text" name="buscar" placeholder="Buscar anime..." class="search-input">
+
+                <a href="catalogo?filtros=abiertos" class="btn-filtros" style="text-decoration: none;">
+                    <i class="ph ph-faders"></i> Filtros
+                </a>
+            </form>
+
+            <nav class="header-nav">
+                <a href="#" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="#5865F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Discord
+                </a>
+                <a href="#" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Horario
+                </a>
+                <a href="catalogo.html" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Catalogo de Animes
+                </a>
+
+                <button class="icon-btn" aria-label="Notificaciones">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                </button>
+
+                <!-- BOTÓN DEL TEMA (Súper limpio) -->
+                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
+                    <i id="icon-sun" class="ph ph-sun theme-icon active"></i>
+                    <i id="icon-moon" class="ph ph-moon theme-icon"></i>
+                </button>
+
+                <div class="user-menu-container">
+                    <button id="user-btn" class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff" alt="Usuario"
+                            class="user-avatar">
+                        <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+
+                    <div id="user-dropdown" class="user-dropdown">
+                        <div class="user-info-header">
+                            <div class="user-avatar-circle">
+                                <img src="https://ui-avatars.com/api/?name=User&background=9ca3af&color=fff"
+                                    alt="Usuario">
+                            </div>
+                            <div class="user-info-text">
+                                <strong>destrox01</strong>
+                                <span>Mi cuenta</span>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a href="#" class="dropdown-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                            Mis Listas
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a href="#" class="dropdown-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" id="serie-container"></main>
+
+    <script src="../js/tema.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/serie.js"></script>
+</body>
+
+</html>
