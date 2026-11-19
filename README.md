@@ -59,6 +59,9 @@ Los roles son:
 ## Reproductor de vídeo  
 El reproductor carga los enlaces de videos desde datos.js, los usuarios pueden marcar los episodios como visto.  
 
+## Página 404
+Creada página 404 que es de error de búsqueda, copiada del proyecto TISIO de Diseño de Interfaz web.
+
 # Próximas Implementaciones  
 
 ## Implementaciones de Apis  

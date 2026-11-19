@@ -72,15 +72,16 @@ a {
     gap: 2rem;
 }
 
-.logo-container img {
-    height: 48px;
-    width: auto;
-    object-fit: contain;
-}
 .logo-container {
     display: flex;
     align-items: center;
     height: 100%;
+}
+
+.logo-container img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
 }
 
 .search-container {
@@ -195,16 +196,18 @@ a {
 .user-profile {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    background: none;
-    border: none;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: var(--bg-search);
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
     cursor: pointer;
-    padding: 0.2rem;
-    border-radius: 20px;
+    transition: border 0.2s;
 }
 
 .user-profile:hover {
-    background-color: var(--bg-search);
+    border-color: var(--primary-color);
 }
 
 .user-avatar {
@@ -225,11 +228,11 @@ a {
     position: absolute;
     top: 140%;
     right: 0;
-    width: 220px;
+    width: 240px;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     flex-direction: column;
     overflow: hidden;
@@ -248,19 +251,23 @@ a {
 .user-info-header {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 1rem;
+    gap: 12px;
+    padding: 15px;
     background-color: var(--bg-search);
 }
 
 .user-avatar-circle {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    overflow: hidden;
+    background-color: #6b7280;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    overflow: hidden;
 }
 
 .user-avatar-circle img {
@@ -294,7 +301,7 @@ a {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    padding: 0.7rem 1rem;
+    padding: 12px 15px;
     color: var(--text-main);
     font-size: 0.85rem;
     font-weight: 500;
@@ -303,6 +310,11 @@ a {
 
 .dropdown-item:hover {
     background-color: var(--bg-search);
+}
+
+.dropdown-item i {
+    font-size: 1.1rem;
+    color: var(--text-muted);
 }
 
 /* =========================================
@@ -559,8 +571,9 @@ body:not(.dark-theme) .hero-overlay {
 
 .episodes-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+    padding: 0 1.5rem;
 }
 
 .episode-card {
@@ -571,6 +584,8 @@ body:not(.dark-theme) .hero-overlay {
     transition: transform 0.2s ease;
     display: block;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .episode-card:hover {
@@ -584,6 +599,7 @@ body:not(.dark-theme) .hero-overlay {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 0.8rem;
+    background-color: var(--bg-search);
 }
 
 .episode-thumbnail img {
@@ -645,15 +661,17 @@ body:not(.dark-theme) .hero-overlay {
 }
 
 .ep-title {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-main);
+    margin-top: 0.5rem;
     line-height: 1.3;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 /* =========================================
    6. DISEÑO DE PÁGINA DE SERIE
    ========================================= */
@@ -1022,12 +1040,11 @@ body:not(.dark-theme) .hero-overlay {
     margin-bottom: 2rem;
 }
 
-.nav-buttons, .action-buttons {
+.nav-buttons {
     display: flex;
     gap: 0.5rem;
 }
 
-/* Botones Anterior / Siguiente */
 .btn-secondary {
     background-color: var(--bg-card);
     color: var(--text-main);
@@ -1048,28 +1065,6 @@ body:not(.dark-theme) .hero-overlay {
     color: var(--primary-color);
 }
 
-
-.action-buttons .icon-btn {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.action-buttons .icon-btn:hover {
-    background-color: var(--bg-search);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-/* Menú Lateral Derecho */
 .player-sidebar {
     width: 320px; 
     background: var(--bg-card);
@@ -1093,7 +1088,6 @@ body:not(.dark-theme) .hero-overlay {
     font-weight: 800;
 }
 
-/* Episodios de 5 columnas */
 .episode-numbers-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
@@ -1126,7 +1120,6 @@ body:not(.dark-theme) .hero-overlay {
     font-weight: 800;
 }
 
-
 .ep-header-info {
     padding: 1rem 0;
 }
@@ -1143,15 +1136,6 @@ body:not(.dark-theme) .hero-overlay {
     margin: 0.5rem 0;
     font-weight: 800;
     color: var(--text-main);
-}
-
-.serie-meta {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 1.2rem;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
 }
 
 .comments-section {
@@ -1293,30 +1277,6 @@ body:not(.dark-theme) .hero-overlay {
         padding: 0;
     }
 
-    .episodes-section, .related-section {
-        padding: 0 1rem;
-    }
-
-    .episode-list-item {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .ep-thumb-small {
-        margin: 0 0 1rem 0;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-    }
-
-    .btn-play-circle {
-        margin-top: 0.5rem;
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-
     .advanced-filters {
         flex-direction: column;
         align-items: stretch;
@@ -1327,8 +1287,9 @@ body:not(.dark-theme) .hero-overlay {
         width: 100%;
     }
 }
+
 /* =========================================
-   10. RELACIONADOS Y EPISODIOS
+   10. RELACIONADOS Y EPISODIOS MODERNOS
    ========================================= */
 .related-section {
     padding: 0 1.5rem;
@@ -1413,7 +1374,6 @@ body:not(.dark-theme) .hero-overlay {
     color: var(--text-muted);
 }
 
-/* --- Episodios --- */
 .season-title {
     font-size: 1.1rem;
     font-weight: 700;
@@ -1494,10 +1454,10 @@ body:not(.dark-theme) .hero-overlay {
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    background-color: rgba(21, 27, 38, 0.7);
+    background-color: rgba(21, 27, 38, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
     cursor: pointer;
@@ -1528,6 +1488,7 @@ body:not(.dark-theme) .hero-overlay {
     display: block;
 }
 
+.btn-mark-watched.is-watched,
 .btn-mark-watched.active {
     opacity: 1;
     background-color: #10b981;
@@ -1535,68 +1496,47 @@ body:not(.dark-theme) .hero-overlay {
     color: #fff;
 }
 
+.btn-mark-watched.is-watched .ph-eye,
 .btn-mark-watched.active .ph-eye {
     display: none;
 }
 
+.btn-mark-watched.is-watched .ph-check-circle,
 .btn-mark-watched.active .ph-check-circle {
     display: block;
 }
 
+.btn-mark-watched.is-watched:hover,
 .btn-mark-watched.active:hover {
     background-color: #ef4444;
     border-color: #ef4444;
 }
 
-.ep-filters {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+#btn-mark-watched-ep {
+    transition: all 0.3s ease;
 }
 
-.search-ep-box {
-    display: flex;
-    align-items: center;
-    background-color: var(--bg-search);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 0 0.8rem;
-    height: 38px;
+#btn-mark-watched-ep.is-watched {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
 }
 
-.search-ep-box i {
-    color: var(--text-muted);
-    font-size: 1rem;
-}
-
-.search-ep-box input {
-    background: none;
-    border: none;
-    outline: none;
-    color: var(--text-main);
-    padding: 0.4rem 0.5rem;
-    font-size: 0.9rem;
-    width: 150px;
-}
-
-.search-ep-box input::placeholder {
-    color: var(--text-muted);
-}
-
-/* =========================================
-   12. BARRA DE BÚSQUEDA
-   ========================================= */
-.episodes-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
+#btn-mark-watched-ep.is-watched i {
+    color: #ffffff !important;
 }
 
 .ep-filters {
     display: flex;
     gap: 0.8rem;
     align-items: center;
+}
+
+.episodes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
 .search-ep-box {
@@ -1665,279 +1605,7 @@ body:not(.dark-theme) .hero-overlay {
 }
 
 /* =========================================
-   13. REUTILIZACIÓN DE TARJETAS DEL INDEX EN SERIE
-   ========================================= */
-.episodes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.2rem;
-    padding: 0 1.5rem;
-}
-
-.episode-card {
-    display: flex;
-    flex-direction: column;
-}
-
-.episode-modern-card-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-mark-watched {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: rgba(21, 27, 38, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: all 0.2s ease;
-    opacity: 0;
-}
-
-.episode-modern-card-wrapper:hover .btn-mark-watched {
-    opacity: 1;
-}
-
-.btn-mark-watched:hover {
-    background-color: var(--primary-color);
-    color: #000;
-    border-color: var(--primary-color);
-}
-
-.btn-mark-watched i {
-    font-size: 1.1rem;
-    display: none;
-}
-
-.btn-mark-watched .ph-eye {
-    display: block;
-}
-
-.btn-mark-watched.active {
-    opacity: 1;
-    background-color: #10b981;
-    border-color: #10b981;
-    color: #fff;
-}
-
-.btn-mark-watched.active .ph-eye {
-    display: none;
-}
-
-.btn-mark-watched.active .ph-check-circle {
-    display: block;
-}
-
-.btn-mark-watched.active:hover {
-    background-color: #ef4444;
-    border-color: #ef4444;
-}
-
-.ep-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-main);
-    margin-top: 0.5rem;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* =========================================
-   14. ESTILO DEL BOTÓN VISTO (OJO / TICK)
-   ========================================= */
-#btn-mark-watched-ep {
-    transition: all 0.3s ease;
-}
-
-#btn-mark-watched-ep.is-watched {
-    background-color: #10b981 !important;
-    color: #ffffff !important;
-    border-color: #10b981 !important;
-}
-
-#btn-mark-watched-ep.is-watched i {
-    color: #ffffff !important;
-}
-
-.btn-mark-watched {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgba(21, 27, 38, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: all 0.2s ease;
-    opacity: 0;
-}
-
-.episode-modern-card-wrapper:hover .btn-mark-watched {
-    opacity: 1;
-}
-
-.btn-mark-watched i {
-    font-size: 1.1rem;
-    display: none;
-}
-
-.btn-mark-watched .ph-eye {
-    display: block;
-}
-
-.btn-mark-watched.is-watched {
-    opacity: 1;
-    background-color: #10b981;
-    border-color: #10b981;
-    color: #ffffff;
-}
-
-.btn-mark-watched.is-watched .ph-eye {
-    display: none;
-}
-
-.btn-mark-watched.is-watched .ph-check-circle {
-    display: block;
-}
-
-/* =========================================
-   15. ESTILO DEL BOTÓN VER CONTRASEÑA
-   ========================================= */
-#btn-mark-watched-ep {
-    transition: all 0.3s ease;
-}
-
-#btn-mark-watched-ep.is-watched {
-    background-color: #10b981 !important;
-    color: #ffffff !important;
-    border-color: #10b981 !important;
-}
-
-#btn-mark-watched-ep.is-watched i {
-    color: #ffffff !important;
-}
-
-/* =========================================
-   16. ESTILOS DEL MENÚ DE USUARIO
-   ========================================= */
-.user-menu-container {
-    position: relative;
-}
-
-.user-profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    background-color: var(--bg-search);
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-    transition: border 0.2s;
-}
-
-.user-profile:hover {
-    border-color: var(--primary-color);
-}
-
-.user-dropdown {
-    position: absolute;
-    top: 130%;
-    right: 0;
-    width: 240px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1000;
-}
-
-.user-dropdown.show {
-    display: flex;
-}
-
-.user-info-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 15px;
-    background-color: var(--bg-search);
-}
-
-.user-avatar-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #6b7280;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.user-info-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-info-text strong {
-    font-size: 0.9rem;
-    color: var(--text-main);
-}
-
-.dropdown-divider {
-    height: 1px;
-    background-color: var(--border-color);
-}
-
-.dropdown-item {
-    padding: 12px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-main);
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.dropdown-item:hover {
-    background-color: var(--bg-search);
-}
-
-.dropdown-item i {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-}
-
-/* =========================================
-   17. ESTILOS DEL LOGIN 
+   12. ESTILOS DEL LOGIN Y MODAL
    ========================================= */
 .login-wrapper {
     display: flex;
@@ -2088,11 +1756,6 @@ body:not(.dark-theme) .hero-overlay {
 }
 .toggle-form span:hover { text-decoration: underline; }
 
-.hidden { display: none !important; }
-
-/* =========================================
-   18. MODAL DE LOGIN (OVERLAY)
-   ========================================= */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -2112,8 +1775,9 @@ body:not(.dark-theme) .hero-overlay {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
 /* =========================================
-   ESTILOS EPISODIO.HTML
+   13. ESTILOS EXCLUSIVOS EPISODIO.HTML
    ========================================= */
 .ep-meta {
     font-size: 0.95rem;
@@ -2124,14 +1788,12 @@ body:not(.dark-theme) .hero-overlay {
     flex-wrap: wrap;
 }
 
-
 .ep-tags {
     display: flex;
     gap: 0.6rem;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
 }
-
 
 .ep-tag {
     background-color: transparent;
@@ -2145,13 +1807,11 @@ body:not(.dark-theme) .hero-overlay {
     transition: all 0.2s ease;
 }
 
-
 .ep-tag:hover {
     background-color: var(--border-color); 
     color: var(--text-main);
     border-color: var(--border-color);
 }
-
 
 body.dark-theme .ep-tag:hover {
     background-color: var(--bg-search);
