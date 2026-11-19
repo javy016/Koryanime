@@ -192,7 +192,7 @@ const animesDB = [
             }
         ],
         relacionados: [
-            { id: 4, titulo: "Jujutsu Kaisen", imagen: "../Imagenes/portadas/jjk-t1.jpg", tipo: "Precuela", año: "2020" }
+            { id: 4, titulo: "Jujutsu Kaisen", imagen: "../Imagenes/portadas/jujutsu-kaisen-t1.jpg", tipo: "Precuela", año: "2020" }
         ]
     },
     {
