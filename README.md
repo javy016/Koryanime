@@ -1,6 +1,6 @@
 # Koryanime
 
-Koryanime es una plataforma web de contenido de anime desarrollada como proyecto de Proyecto de Fin de Grado. 
+Es una plataforma web de contenido de anime desarrollada como TFG. 
 
 El objetivo principal es crear un catálogo funcional donde los usuarios puedan explorar el catálogo de series, ver detalles, reproducir episodios y gestionar sus propias listas.
 
@@ -14,8 +14,6 @@ El objetivo principal es crear un catálogo funcional donde los usuarios puedan 
 *   **Despliegue:** Vercel en el siguiente enlace: [Enlace Página Web](https://koryanime.vercel.app/) .
 
 ## Estructura del Proyecto
-
-El proyecto está organizado de la siguiente forma:
 
 ```text
 /
@@ -88,6 +86,7 @@ Me centre demasiado en crear los ajustes funcionales para tener un prototipo y n
 2. Posibilidad de valoración propia.  
 3. Posibilidad de contactar con algun tipo de soporte para obtener ayuda.  
 4. Agregar chatbot.  
+5. Mejoras visuales.  
 
 ## Autor  
 Desarrollado por Javier Collado Vinagre.
