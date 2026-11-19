@@ -42,7 +42,7 @@ const animesDB = [
                 episodios: [
                     { 
                         id: 1, 
-                        titulo: "El hombre de la paja", 
+                        titulo: "¡Soy Luffy! ¡El hombre que se convertirá en el Rey de los piratas!", 
                         duracion: "24 min", 
                         imagen: "../Imagenes/series/onepiece/episodios/episodio1.jpg", 
                         fechaSubida: "2024-05-10T14:30:00", 
