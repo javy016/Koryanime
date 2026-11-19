@@ -6,7 +6,7 @@ El objetivo principal es crear un catálogo funcional donde los usuarios puedan 
 
 ## Stack Tecnológico
 
-*   **Frontend:** HTML5, CSS3, JavaScript.
+*   **Frontend:** HTML, CSS, JavaScript.
 *   **Entorno de ejecución:** Node.js (Entorno de pruebas).
 *   **Librerías externas:** 
     *   Phosphor Icons (iconos de la página).
@@ -90,4 +90,4 @@ Me centre demasiado en crear los ajustes funcionales para tener un prototipo y n
 4. Agregar chatbot.  
 
 ## Autor  
-Desarrollado por Javier Collado Vinagre
+Desarrollado por Javier Collado Vinagre.
