@@ -746,7 +746,7 @@ body:not(.tema-oscuro) .superposicion-portada {
 
 .datos-serie {
     font-size: 0.9rem;
-    color: #d1d5db;
+    color: #ffffff;
     margin-bottom: 1.2rem;
     display: flex;
     gap: 0.5rem;
@@ -762,8 +762,8 @@ body:not(.tema-oscuro) .superposicion-portada {
 
 .etiqueta-nueva {
     background-color: transparent;
-    color: #d1d5db;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -781,7 +781,7 @@ body:not(.tema-oscuro) .superposicion-portada {
 .sinopsis-serie {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #d1d5db;
+    color: #ffffff;
     margin-bottom: 2rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -809,9 +809,12 @@ body:not(.tema-oscuro) .superposicion-portada {
     color: #fbbf24;
 }
 
-.texto-puntuacion {
-    display: flex;
-    flex-direction: column;
+.texto-puntuacion span {
+    font-size: 0.65rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 2px;
 }
 
 .texto-puntuacion strong {
@@ -892,16 +895,47 @@ body:not(.tema-oscuro) .superposicion-portada {
     border-color: #ef4444;
 }
 
+.boton-accion.selector-lista,
 .selector-lista {
-    background: var(--fondo-busqueda);
-    border: 1px solid var(--color-borde);
+    background-color: var(--fondo-tarjeta);
     color: var(--texto-principal);
-    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-borde);
+    padding: 0.7rem 1.2rem;
     border-radius: 8px;
     outline: none;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
+    height: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 12px;
+    padding-right: 2.2rem;
+}
+
+.boton-accion.selector-lista:hover,
+.selector-lista:hover {
+    border-color: var(--color-principal);
+}
+
+.boton-accion.selector-lista option,
+.selector-lista option {
+    background-color: var(--fondo-tarjeta);
+    color: var(--texto-principal);
+}
+
+body.tema-oscuro .boton-accion.selector-lista,
+body.tema-oscuro .selector-lista {
+    color-scheme: dark;
+}
+
+body:not(.tema-oscuro) .boton-accion.selector-lista,
+body:not(.tema-oscuro) .selector-lista {
+    color-scheme: light;
 }
 
 .pestanas-serie {
