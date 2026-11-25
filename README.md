@@ -82,7 +82,7 @@ En vez de usar vercel, usare Railway para facilitar la implementación de las AP
 Ya que deje a medias la configuración de usuario, horario de animes y listas que no me dio tiempo a realizar, lo seguire procesando hasta darlo por finalizado y funcional dichas acciones.  
  
 ## Creación de footer  
-Me centre demasiado en crear los ajustes funcionales para tener un prototipo y no cree en footer, se hará en la proxima entrega con las redes sociales, botón de discord funcional, implementación de cookies, copyright y politicas de privacidad y terminos de condiciones.  
+Me centre demasiado en crear los ajustes funcionales para tener un prototipo y no cree en footer, se hará en la proxima entrega con las redes sociales, implementación de cookies, copyright y politicas de privacidad y terminos de condiciones.  
 
 ## Posibles intentos futuros  
 1. Creación de comentarios en línea.  
