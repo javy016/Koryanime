@@ -1868,8 +1868,6 @@ body.tema-oscuro .etiqueta-episodio:hover {
 .enlace-github i {
   font-size: 1.25rem;
 }
-
-/* Efecto al pasar el ratón */
 .enlace-github:hover,
 .enlace-github:focus-visible {
   background-color: rgba(128, 128, 128, 0.15);
