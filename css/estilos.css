@@ -750,12 +750,15 @@ body.tema-oscuro .degradado-portada-serie {
     margin-bottom: 0.5rem;
     line-height: 1.1;
     color: var(--texto-principal);
+}
+
+body.tema-oscuro .detalles-serie h1 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .datos-serie {
     font-size: 0.9rem;
-    color: #ffffff;
+    color: var(--texto-secundario);
     margin-bottom: 1.2rem;
     display: flex;
     gap: 0.5rem;
@@ -771,8 +774,8 @@ body.tema-oscuro .degradado-portada-serie {
 
 .etiqueta-nueva {
     background-color: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--texto-principal);
+    border: 1px solid var(--color-borde);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -790,7 +793,7 @@ body.tema-oscuro .degradado-portada-serie {
 .sinopsis-serie {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #ffffff;
+    color: var(--texto-secundario);
     margin-bottom: 2rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -829,12 +832,13 @@ body.tema-oscuro .degradado-portada-serie {
 .texto-puntuacion strong {
     font-size: 1.3rem;
     line-height: 1;
-    color: #fff;
+    color: var(--texto-principal);
 }
+
 
 .texto-puntuacion span {
     font-size: 0.65rem;
-    color: #9ca3af;
+    color: var(--texto-secundario);
     text-transform: uppercase;
     font-weight: 600;
     margin-top: 2px;
