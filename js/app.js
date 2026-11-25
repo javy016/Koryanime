@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     seriesTendencias.forEach(serie => {
-        celdasTendencias.innerHTML += `
+        celdasTendencias.innerHTML =celdasTendencias.innerHTML+  `
             <a href="webs/serie?id=${serie.idAnime}" class="tarjeta-anime" style="text-decoration: none;">
                 <div class="img-tarjeta">
                     <img src="${serie.imgAnime}" alt="${serie.tituloAnime}">
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const celdasEpisodios = document.getElementById('recent-episodes-grid');
 
     allEpisodios.slice(0, 4).forEach(ep => {
-        celdasEpisodios.innerHTML += `
+        celdasEpisodios.innerHTML =  celdasEpisodios.innerHTML+ `
             <a href="webs/serie?id=${ep.idAnime}#episodios" class="tarjeta-episodio" style="text-decoration: none;">
                 <div class="miniatura-episodio">
                     <img src="${ep.imagen || ep.imgAnime}" alt="${ep.tituloAnime}">

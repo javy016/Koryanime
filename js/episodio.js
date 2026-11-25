@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (celda) {
         temporadaActual.episodios.forEach(ep => {
             const estaActivo = ep.id === numEpisodio ? 'activo' : '';
-            celda.innerHTML += `
+            celda.innerHTML =  celda.innerHTML+ `
                 <a href="episodio?id=${anime.id}&temp=${temporadaActual.numero}&ep=${ep.id}" class="boton-numero-episodio ${estaActivo}">
                     ${ep.id}
                 </a>

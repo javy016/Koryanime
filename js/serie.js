@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="tiempo-relaciones">`;
 
         listaRelacionados.forEach(rel => {
-            html += `
+            html = html + `
                 <div class="linea-tiempo">
                     <div class="anio-tiempo">${rel.año}</div>
                     <a href="serie?id=${rel.id}" class="relacion-horizontal">
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
 
-        html += `</div></section>`;
+        html = html +  `</div></section>`;
         return html;
     }
 
@@ -132,13 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         if (episodiosFiltrados.length === 0) {
-            html += `<p style="grid-column: 1/-1; color: var(--texto-secundario); padding: 1rem 0;">No se encontraron episodios.</p>`;
+            html = html + `<p style="grid-column: 1/-1; color: var(--texto-secundario); padding: 1rem 0;">No se encontraron episodios.</p>`;
         } else {
             episodiosFiltrados.forEach(ep => {
                 const estaVisto = vistos.includes(ep.id);
                 const claseVerificado = estaVisto ? 'esta-visto' : '';
 
-                html += `
+                html = html+ `
                     <div class="contenedor-tarjeta-moderna-episodio">
                         <a href="episodio?id=${anime.id}&ep=${ep.id}" class="tarjeta-episodio">
                             <div class="miniatura-episodio">
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        html += `</div>`;
+        html = html + `</div>`;
         return html;
     }
 
