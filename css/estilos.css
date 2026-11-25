@@ -1,6 +1,6 @@
-/* =========================================
+/* -------------------------------------------
    1. CONFIGURACIÓN
-   ========================================= */
+    ------------------------------------------- */
 :root {
     --fondo-cuerpo: #f3f4f6;
     --fondo-cabecera: #ffffff;
@@ -47,9 +47,9 @@ a {
     display: none !important;
 }
 
-/* =========================================
+/* -------------------------------------------
    2. CABECERA Y NAVEGAR
-   ========================================= */
+    ------------------------------------------- */
 .cabecera-principal {
     background-color: var(--fondo-cabecera);
     border-bottom: 1px solid var(--color-borde);
@@ -186,9 +186,9 @@ a {
     display: block;
 }
 
-/* =========================================
+/* -------------------------------------------
    3. MENÚ DESPLEGABLE DE USUARIO
-   ========================================= */
+    ------------------------------------------- */
 .contenedor-menu-usuario {
     position: relative;
 }
@@ -317,9 +317,9 @@ a {
     color: var(--texto-secundario);
 }
 
-/* =========================================
+/* -------------------------------------------
    4. CONTENIDO PRINCIPAL Y CARRUSEL
-   ========================================= */
+    ------------------------------------------- */
 .contenido-principal {
     max-width: 1300px;
     margin: 0 auto;
@@ -483,9 +483,9 @@ body:not(.tema-oscuro) .superposicion-portada {
 .boton-carrusel.anterior { left: 1rem; }
 .boton-carrusel.siguiente { right: 1rem; }
 
-/* =========================================
+/* -------------------------------------------
    5. CARTAS DE ANIME Y EPISODIOS
-   ========================================= */
+    ------------------------------------------- */
 .celda-animes {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -672,9 +672,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     overflow: hidden;
 }
 
-/* =========================================
+/* -------------------------------------------
    6. DISEÑO DE PÁGINA DE SERIES
-   ========================================= */
+    ------------------------------------------- */
 .contenedor-portada-serie {
     position: relative;
     width: 100%;
@@ -905,9 +905,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     border-bottom-color: var(--color-principal);
 }
 
-/* =========================================
+/* -------------------------------------------
    7. CATÁLOGO 
-   ========================================= */
+    ------------------------------------------- */
 .filtro-alfabetico {
     display: flex;
     flex-wrap: wrap;
@@ -1002,9 +1002,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     grid-template-columns: repeat(5, 1fr);
 }
 
-/* =========================================
+/* -------------------------------------------
    8. REPRODUCTOR DE EPISODIOS
-   ========================================= */
+    ------------------------------------------- */
 .distribucion-reproductor {
     display: flex;
     gap: 1.5rem;
@@ -1188,9 +1188,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     cursor: pointer;
 }
 
-/* =========================================
+/* -------------------------------------------
    9. RESPONSIVE
-   ========================================= */
+    ------------------------------------------- */
 @media (max-width: 1024px) {
     .celda-animes, #celdas-catalogo {
         grid-template-columns: repeat(4, 1fr);
@@ -1288,9 +1288,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     }
 }
 
-/* =========================================
+/* -------------------------------------------
    10. RELACIONES
-   ========================================= */
+    ------------------------------------------- */
 .seccion-relacionados {
     padding: 0 1.5rem;
     margin-top: 2rem;
@@ -1443,9 +1443,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     overflow: hidden;
 }
 
-/* =========================================
+/* -------------------------------------------
    11. BOTÓN PARA MARCAR EPISODIOS COMO VISTOS
-   ========================================= */
+    ------------------------------------------- */
 .contenedor-tarjeta-moderna-episodio {
     position: relative;
 }
@@ -1604,9 +1604,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     color: var(--color-principal);
 }
 
-/* =========================================
+/* -------------------------------------------
    12. ESTILOS DEL LOGIN/REGISTER
-   ========================================= */
+    ------------------------------------------- */
 .contenedor-inicio-sesion {
     display: flex;
     justify-content: center;
@@ -1776,9 +1776,9 @@ body:not(.tema-oscuro) .superposicion-portada {
     to { opacity: 1; }
 }
 
-/* =========================================
+/* -------------------------------------------
    13. ESTILOS PÁGINA DE EPISODIOS
-   ========================================= */
+    ------------------------------------------- */
 .datos-episodio {
     font-size: 0.95rem;
     color: var(--texto-secundario);
@@ -1830,7 +1830,9 @@ body.tema-oscuro .etiqueta-episodio:hover {
     max-width: 900px;
 }
 
-/* Pie de pagina */
+/* ------------------------------------------- 
+    14. PIE DE PÁGINA
+    -------------------------------------------*/
 .pie-pagina {
   width: 100%;
   padding: 1.5rem 2rem;

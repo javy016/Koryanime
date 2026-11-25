@@ -1,6 +1,5 @@
 # Koryanime
-
-Es una plataforma web de contenido de anime desarrollada como TFG. 
+Es una plataforma web de contenido de series y peliculas entre otros de anime desarrollada como TFG. 
 
 El objetivo principal es crear un catálogo funcional donde los usuarios puedan explorar el catálogo de series, ver detalles, reproducir episodios y gestionar sus propias listas.
 
@@ -30,15 +29,16 @@ El objetivo principal es crear un catálogo funcional donde los usuarios puedan 
 │   ├── episodio.js          # Renderizado de la página de reproductor
 │   └── tema.js              # Cambio de tema (modo claro/oscuro)
 ├── imagenes/
-│   ├── portadas/            # Portadas de las series
-│   ├── carrusel/            # Imágenes horizontales
-│   ├── series/              # Miniaturas de los episodios
-│   └── logos/               # Logos de la página web
+│   ├── portadas/...         # Portadas de las series
+│   ├── carrusel/...         # Imágenes horizontales
+│   ├── series/...           # Miniaturas de los episodios
+│   └── logos/...            # Logos de la página web
 ├── webs/
 │   ├── catalogo.html        # Catálogo
 │   ├── serie.html           # Serie concreta
 │   └── episodio.html        # Episodio de una serie con reproductor
-├── index.html               # Página inicio
+├── index.html               # Página principal 
+├── 404.html                 # Página de error 404
 └── README.md
 ```  
 
