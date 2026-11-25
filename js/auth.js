@@ -1,57 +1,58 @@
-const DB_USERS = 'koryanime_usuarios';
-const SESSION_KEY = 'koryanime_sesion';
+// Gestion del registro, inicio y el cierre de sesión de los usuarios. 
 
-// Inicializar base de datos con un usuario admin por defecto si no existe
-function initDB() {
-    if (!localStorage.getItem(DB_USERS)) {
+const db_Usuarios = 'koryanime_usuarios';
+const password_sesion = 'koryanime_sesion';
+
+// Roles
+function iniciarBD() {
+    if (!localStorage.getItem(db_Usuarios)) {
         const usuarios = [
-            { id: 1, nombre: 'admin', email: 'admin@koryanime.com', pass: 'Admin123!', rol: 'admin' },
-            { id: 2, nombre: 'editor', email: 'editor@koryanime.com', pass: 'Editor123!', rol: 'editor' },
-            { id: 3, nombre: 'user', email: 'user@koryanime.com', pass: 'User123!', rol: 'estandar' }
+            { id: 1, nombre: 'admin', correo: 'admin@koryanime.com', contrasena: '0T{&yrHlh0XZj7GwO8DI', rol: 'Administrador' },
+            { id: 2, nombre: 'editor', correo: 'editor@koryanime.com', contrasena: 'W$4EWm@wV7ZchpQ$', rol: 'Editor' },
+            { id: 3, nombre: 'usuario', correo: 'usuario@koryanime.com', contrasena: 'usuario', rol: 'Usuario' }
         ];
-        localStorage.setItem(DB_USERS, JSON.stringify(usuarios));
+        localStorage.setItem(db_Usuarios, JSON.stringify(usuarios));
     }
 }
-initDB();
+iniciarBD();
 
 // Obtener la sesión actual
-function getSesion() {
-    return JSON.parse(localStorage.getItem(SESSION_KEY));
+function obtenerSesion() {
+    return JSON.parse(localStorage.getItem(password_sesion));
 }
 
-// Cerrar sesión
+
 function cerrarSesion() {
-    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(password_sesion);
     window.location.reload(); // Recargar para que se actualice el header
 }
 
-// Iniciar sesión
-function loginUsuario(email, pass) {
-    const users = JSON.parse(localStorage.getItem(DB_USERS));
-    const user = users.find(u => u.email === email && u.pass === pass);
 
-    if (!user) return { ok: false, msg: 'Correo o contraseña incorrectos.' };
-    if (user.baneado) return { ok: false, msg: 'Tu cuenta está baneada temporalmente.' };
+function loginUser(correo, contrasena) {
+    const usuarios = JSON.parse(localStorage.getItem(db_Usuarios));
+    const usuario = usuarios.find(u => u.correo === correo && u.contrasena === contrasena);
 
-    // Guardar sesión (sin la contraseña)
-    const sesion = { id: user.id, nombre: user.nombre, email: user.email, rol: user.rol };
-    localStorage.setItem(SESSION_KEY, JSON.stringify(sesion));
-    return { ok: true, user: sesion };
+    if (!usuario) return { ok: false, msg: 'Correo o contraseña incorrectos.' };
+    if (usuario.ban) return { ok: false, msg: 'Tu cuenta está baneada temporalmente.' };
+
+    // Guarda sesión 
+    const sesion = { id: usuario.id, nombre: usuario.nombre, correo: usuario.correo, rol: usuario.rol };
+    localStorage.setItem(password_sesion, JSON.stringify(sesion));
+    return { ok: true, usuario: sesion };
 }
 
-// Registrar nuevo usuario
-function registrarUsuario(nombre, email, pass) {
-    const users = JSON.parse(localStorage.getItem(DB_USERS));
-    
-    // Comprobar si el email ya existe
-    if (users.some(u => u.email === email)) {
+function registrarUsuario(nombre, correo, contrasena) {
+    const usuarios = JSON.parse(localStorage.getItem(db_Usuarios));
+
+    // Comprobrueba si el correo ya existe
+    if (usuarios.some(u => u.correo === correo)) {
         return { ok: false, msg: 'Este correo ya está registrado.' };
     }
 
-    const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
-    const nuevoUsuario = { id: newId, nombre, email, pass, rol: 'estandar', baneado: false };
-    
-    users.push(nuevoUsuario);
-    localStorage.setItem(DB_USERS, JSON.stringify(users));
+    const nuevoId = usuarios.length > 0 ? Math.max(...usuarios.map(u => u.id)) + 1 : 1;
+    const nuevoUsuario = { id: nuevoId, nombre, correo, contrasena, rol: 'Usuario', ban: false };
+
+    usuarios.push(nuevoUsuario);
+    localStorage.setItem(db_Usuarios, JSON.stringify(usuarios));
     return { ok: true, msg: 'Registro exitoso. Ahora puedes iniciar sesión.' };
 }

@@ -1,91 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reproductor - Koryanime</title>
+    <title>Episodio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="icon" type="image/png" href="../Imagenes/logos/icono.png">
 </head>
+
 <body>
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo-container">
+    <header class="cabecera-principal">
+        <div class="contenedor-cabecera">
+            <div class="contenedor-logotipo">
                 <a href="../index.html">
-                    <img id="logo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Koryanime Logo" style="height: 28px;">
+                    <img id="logotipo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Logotipo de Koryanime"
+                        style="height: 28px;">
                 </a>
             </div>
-            
-            <form class="search-container" action="catalogo.html" method="GET">
-                <i class="ph ph-magnifying-glass search-icon"></i>
-                <input type="text" name="buscar" placeholder="Buscar anime..." class="search-input">
-                <a href="catalogo.html?filtros=abiertos" class="btn-filtros" style="text-decoration: none;">
+
+            <form class="contenedor-busqueda" action="catalogo.html" method="GET">
+                <i class="ph ph-magnifying-glass icono-busqueda"></i>
+                <input type="text" name="buscar" placeholder="Buscar anime..." class="escribir-Busqueda">
+                <a href="catalogo.html?filtros=abiertos" class="boton-filtros" style="text-decoration: none;">
                     <i class="ph ph-faders"></i> Filtros
                 </a>
             </form>
 
-            <nav class="header-nav">
-                <a href="#" class="nav-link"><i class="ph ph-discord-logo" style="color: #5865F2;"></i> Discord</a>
-                <a href="#" class="nav-link"><i class="ph ph-calendar-blank"></i> Horario</a>
-                <a href="catalogo.html" class="nav-link"><i class="ph ph-books"></i> Catalogo de Animes</a>
-                
-                <button class="icon-btn" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
+            <nav class="navegacion-cabecera">
+                <a href="#" class="enlace-navegacion"><i class="ph ph-discord-logo" style="color: #5865F2;"></i>
+                    Discord</a>
+                <a href="#" class="enlace-navegacion"><i class="ph ph-calendar-blank"></i> Horario</a>
+                <a href="catalogo.html" class="enlace-navegacion"><i class="ph ph-books"></i> Catálogo de animes</a>
 
-                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
-                    <i id="icon-sun" class="ph ph-sun theme-icon active"></i>
-                    <i id="icon-moon" class="ph ph-moon theme-icon"></i>
+                <button class="boton-icono" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
+
+                <button id="alternar-tema" class="boton-icono" aria-label="Cambiar tema">
+                    <i id="icono-sol" class="ph ph-sun icono-tema activo"></i>
+                    <i id="icono-luna" class="ph ph-moon icono-tema"></i>
                 </button>
-                <div class="user-menu-container">
-                    <button id="user-btn" class="user-profile">
-                        <div id="user-dropdown-content">
+                <div class="contenedor-menu-usuario">
+                    <button id="boton-usuario" class="perfil-usuario">
+                        <div id="contenido-desplegable-usuario">
                             <i class="ph ph-user" style="font-size: 20px;"></i>
                         </div>
                     </button>
 
-                    <div id="user-dropdown-menu" class="user-dropdown">
+                    <div id="desplegable-usuario" class="desplegable-usuario">
                     </div>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main class="main-content player-layout">
-        
-        <div class="player-main">
-            <div class="video-container">
-                <iframe id="video-player" src="" title="Reproductor" frameborder="0" allowfullscreen></iframe>
+    <main class="contenido-principal distribucion-reproductor">
+
+        <div class="zona-principal-reproductor">
+            <div class="contenedor-video">
+                <iframe id="reproductor-video" src="" title="Reproductor" frameborder="0" allowfullscreen></iframe>
             </div>
-            
-            <!-- CONTROLES -->
-            <div class="player-controls">
-                <div class="nav-buttons">
-                    <a href="#" id="btn-prev-ep" class="btn-secondary"><i class="ph ph-caret-left"></i> Anterior</a>
-                    <a href="#" id="btn-next-ep" class="btn-secondary">Siguiente <i class="ph ph-caret-right"></i></a>
+
+            <div class="controles-reproductor">
+                <div class="botones-navegacion">
+                    <a href="#" id="boton-episodio-anterior" class="boton-secundario"><i class="ph ph-caret-left"></i>
+                        Anterior</a>
+                    <a href="#" id="boton-episodio-siguiente" class="boton-secundario">Siguiente <i
+                            class="ph ph-caret-right"></i></a>
                 </div>
             </div>
 
             <!-- Visto -->
-            <div class="episode-info-bottom" id="episode-info-bottom"></div>
+            <div class="info-episodio" id="info-episodio"></div>
         </div>
 
         <!-- Lista de Episodios -->
-        <aside class="player-sidebar">
-            <div class="sidebar-header">
+        <aside class="barra-lateral-reproductor">
+            <div class="cabecera-barra-lateral">
                 <span>Estás viendo</span>
-                <h3 id="sidebar-ep-title">Episodio 1</h3>
+                <h3 id="tit-ep-lateral">Episodio 1</h3>
             </div>
-            <div class="episode-numbers-grid" id="sidebar-episodes-grid">
+            <div class="celda-numeros-episodios" id="celdas-ep-lateral">
             </div>
         </aside>
-        
+
     </main>
 
-    <!-- SCRIPTS -->
     <script src="../js/tema.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/datos.js"></script>
     <script src="../js/episodio.js"></script>
 </body>
+
 </html>

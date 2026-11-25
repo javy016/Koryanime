@@ -4,104 +4,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Koryanime</title>
+    <title>Catálogo</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="icon" type="image/png" href="../Imagenes/logos/icono.png">
 </head>
 
 <body>
 
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo-container">
+    <header class="cabecera-principal">
+        <div class="contenedor-cabecera">
+            <div class="contenedor-logotipo">
                 <a href="../index.html">
-                    <img id="logo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Koryanime Logo"
+                    <img id="logotipo-koryanime" src="../Imagenes/logos/logo_oscuro.png" alt="Logotipo de Koryanime"
                         style="height: 28px;">
                 </a>
             </div>
 
-            <form class="search-container" action="catalogo.html" method="GET">
-                <i class="ph ph-magnifying-glass search-icon"></i>
-                <input type="text" name="buscar" placeholder="Buscar anime..." class="search-input">
-                <button type="button" id="toggle-filters-btn" class="btn-filtros">
+            <form class="contenedor-busqueda" action="catalogo.html" method="GET">
+                <i class="ph ph-magnifying-glass icono-busqueda"></i>
+                <input type="text" name="buscar" placeholder="Buscar anime..." class="escribir-Busqueda">
+                <button type="button" id="boton-alternar-filtros" class="boton-filtros">
                     <i class="ph ph-faders"></i> Filtros
                 </button>
             </form>
 
-            <nav class="header-nav">
-                <a href="#" class="nav-link"><i class="ph ph-discord-logo" style="color: #5865F2;"></i> Discord</a>
-                <a href="#" class="nav-link"><i class="ph ph-calendar-blank"></i> Horario</a>
-                <a href="catalogo.html" class="nav-link"><i class="ph ph-books"></i> Catalogo de Animes</a>
+            <nav class="navegacion-cabecera">
+                <a href="#" class="enlace-navegacion"><i class="ph ph-discord-logo" style="color: #5865F2;"></i>
+                    Discord</a>
+                <a href="#" class="enlace-navegacion"><i class="ph ph-calendar-blank"></i> Horario</a>
+                <a href="catalogo.html" class="enlace-navegacion"><i class="ph ph-books"></i> Catálogo de animes</a>
 
-                <button class="icon-btn" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
+                <button class="boton-icono" aria-label="Notificaciones"><i class="ph ph-bell"></i></button>
 
-                <button id="theme-toggle" class="icon-btn" aria-label="Cambiar tema">
-                    <i id="icon-sun" class="ph ph-sun theme-icon active"></i>
-                    <i id="icon-moon" class="ph ph-moon theme-icon"></i>
+                <button id="alternar-tema" class="boton-icono" aria-label="Cambiar tema">
+                    <i id="icono-sol" class="ph ph-sun icono-tema activo"></i>
+                    <i id="icono-luna" class="ph ph-moon icono-tema"></i>
                 </button>
-                <div class="user-menu-container">
-                    <button id="user-btn" class="user-profile">
-                        <div id="user-dropdown-content">
+                <div class="contenedor-menu-usuario">
+                    <button id="boton-usuario" class="perfil-usuario">
+                        <div id="contenido-desplegable-usuario">
                             <i class="ph ph-user" style="font-size: 20px;"></i>
                         </div>
                     </button>
 
-                    <div id="user-dropdown-menu" class="user-dropdown">
+                    <div id="desplegable-usuario" class="desplegable-usuario">
                     </div>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="section-header" style="margin-top: 2rem; margin-bottom: 1.5rem;">
+    <main class="contenido-principal">
+        <div class="cabecera-seccion" style="margin-top: 2rem; margin-bottom: 1.5rem;">
             <h2 id="titulo-catalogo">Catálogo de Animes</h2>
         </div>
 
-        <div id="panel-filtros" class="panel-filtros hidden">
+        <div id="panel-filtros" class="panel-filtros oculto">
 
             <!-- Barra de Búsqueda por Letra -->
-            <div class="alphabet-filter" id="alphabet-filter">
-                <button class="alpha-btn active" data-letter="all">#</button>
-                <button class="alpha-btn" data-letter="A">A</button>
-                <button class="alpha-btn" data-letter="B">B</button>
-                <button class="alpha-btn" data-letter="C">C</button>
-                <button class="alpha-btn" data-letter="D">D</button>
-                <button class="alpha-btn" data-letter="E">E</button>
-                <button class="alpha-btn" data-letter="F">F</button>
-                <button class="alpha-btn" data-letter="G">G</button>
-                <button class="alpha-btn" data-letter="H">H</button>
-                <button class="alpha-btn" data-letter="I">I</button>
-                <button class="alpha-btn" data-letter="J">J</button>
-                <button class="alpha-btn" data-letter="K">K</button>
-                <button class="alpha-btn" data-letter="L">L</button>
-                <button class="alpha-btn" data-letter="M">M</button>
-                <button class="alpha-btn" data-letter="N">N</button>
-                <button class="alpha-btn" data-letter="O">O</button>
-                <button class="alpha-btn" data-letter="P">P</button>
-                <button class="alpha-btn" data-letter="Q">Q</button>
-                <button class="alpha-btn" data-letter="R">R</button>
-                <button class="alpha-btn" data-letter="S">S</button>
-                <button class="alpha-btn" data-letter="T">T</button>
-                <button class="alpha-btn" data-letter="U">U</button>
-                <button class="alpha-btn" data-letter="V">V</button>
-                <button class="alpha-btn" data-letter="W">W</button>
-                <button class="alpha-btn" data-letter="X">X</button>
-                <button class="alpha-btn" data-letter="Y">Y</button>
-                <button class="alpha-btn" data-letter="Z">Z</button>
+            <div class="filtro-alfabetico" id="filtro-alfabetico">
+                <button class="boton-letra activo" data-letra="all">#</button>
+                <button class="boton-letra" data-letra="A">A</button>
+                <button class="boton-letra" data-letra="B">B</button>
+                <button class="boton-letra" data-letra="C">C</button>
+                <button class="boton-letra" data-letra="D">D</button>
+                <button class="boton-letra" data-letra="E">E</button>
+                <button class="boton-letra" data-letra="F">F</button>
+                <button class="boton-letra" data-letra="G">G</button>
+                <button class="boton-letra" data-letra="H">H</button>
+                <button class="boton-letra" data-letra="I">I</button>
+                <button class="boton-letra" data-letra="J">J</button>
+                <button class="boton-letra" data-letra="K">K</button>
+                <button class="boton-letra" data-letra="L">L</button>
+                <button class="boton-letra" data-letra="M">M</button>
+                <button class="boton-letra" data-letra="N">N</button>
+                <button class="boton-letra" data-letra="O">O</button>
+                <button class="boton-letra" data-letra="P">P</button>
+                <button class="boton-letra" data-letra="Q">Q</button>
+                <button class="boton-letra" data-letra="R">R</button>
+                <button class="boton-letra" data-letra="S">S</button>
+                <button class="boton-letra" data-letra="T">T</button>
+                <button class="boton-letra" data-letra="U">U</button>
+                <button class="boton-letra" data-letra="V">V</button>
+                <button class="boton-letra" data-letra="W">W</button>
+                <button class="boton-letra" data-letra="X">X</button>
+                <button class="boton-letra" data-letra="Y">Y</button>
+                <button class="boton-letra" data-letra="Z">Z</button>
             </div>
 
             <!-- Filtros Desplegables -->
-            <div class="advanced-filters">
-                <select id="filter-type" class="filter-select">
+            <div class="filtros-avanzados">
+                <select id="filtro-tipo" class="selector-filtro">
                     <option value="">Tipo: Seleccionar</option>
                     <option value="TV Anime">TV Anime</option>
                     <option value="Película">Película</option>
                     <option value="OVA">OVA</option>
                 </select>
 
-                <select id="filter-genre" class="filter-select">
+                <select id="filtro-genero" class="selector-filtro">
                     <option value="">Género: Seleccionar</option>
                     <option value="Acción">Acción</option>
                     <option value="Aventura">Aventura</option>
@@ -111,7 +113,7 @@
                     <option value="Sobrenatural">Sobrenatural</option>
                 </select>
 
-                <select id="filter-year" class="filter-select">
+                <select id="filtro-anio" class="selector-filtro">
                     <option value="">Año: Seleccionar</option>
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>
@@ -119,23 +121,23 @@
                     <option value="2019">2019</option>
                 </select>
 
-                <select id="filter-status" class="filter-select">
+                <select id="filtro-estado" class="selector-filtro">
                     <option value="">Estado: Seleccionar</option>
                     <option value="En emisión">En emisión</option>
                     <option value="Finalizado">Finalizado</option>
                     <option value="Próximamente">Próximamente</option>
                 </select>
 
-                <button id="apply-filters" class="btn-apply-filters">Filtrar</button>
+                <button id="aplicar-filtros" class="boton-aplicar-filtros">Filtrar</button>
             </div>
         </div>
 
-        <!-- Resultados y Ordenación -->
-        <div class="results-header">
-            <span id="results-count">0 Resultados</span>
-            <div class="sort-container">
+        <!-- Resultados y Orden -->
+        <div class="cabecera-resultados">
+            <span id="cantidad-resultados">0 Resultados</span>
+            <div class="contenedor-ordenacion">
                 <span>Ordenar por:</span>
-                <select id="sort-order" class="sort-select">
+                <select id="orden-resultados" class="selector-ordenacion">
                     <option value="default">Predeterminado</option>
                     <option value="rating">Mejor puntuados</option>
                     <option value="year">Más recientes</option>
@@ -144,10 +146,9 @@
         </div>
 
         <!-- series -->
-        <div class="anime-grid" id="catalogo-grid"></div>
+        <div class="celda-animes" id="celdas-catalogo"></div>
     </main>
 
-    <!-- SCRIPTS -->
     <script src="../js/tema.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/header.js"></script>

@@ -1,53 +1,55 @@
+// Muestra la ficha de cada serie y gestiona sus episodios y listas.
+
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('serie-container');
-    const urlParams = new URLSearchParams(window.location.search);
-    const animeId = urlParams.get('id');
-    
-    const anime = getAnimeById(animeId);
+    const contenedor = document.getElementById('contenedor-serie');
+    const parametrosUrl = new URLSearchParams(window.location.search);
+    const idAnime = parametrosUrl.get('id');
+
+    const anime = buscarSeriesId(idAnime);
     if (!anime) {
-        container.innerHTML = `<h2 style="text-align:center; padding: 4rem;">Serie no encontrada</h2>`;
+        contenedor.innerHTML = `<h2 style="text-align:center; padding: 4rem;">Serie no encontrada</h2>`;
         return;
     }
 
     document.title = `${anime.titulo} ${anime.subtitulo ? '- ' + anime.subtitulo : ''} - Koryanime`;
 
     let vistos = JSON.parse(localStorage.getItem(`vistos_${anime.id}`)) || [];
-    let epsInvertidos = false;
+    let episodiosInvertidos = false;
     let textoBusqueda = "";
-    
-    const listasUsuario = JSON.parse(localStorage.getItem('listasKoryanime')) || { favoritos: [] };
-    const estaEnFavoritos = listasUsuario.favoritos.includes(anime.id);
 
-    function crearCabeceraHTML() {
-        const etiquetasHTML = anime.etiquetas.map(tag => 
-            `<a href="catalogo?categoria=${tag}" class="tag-new">${tag}</a>`
+    const listasUsuario = JSON.parse(localStorage.getItem('listasKoryanime')) || { favoritos: [] };
+    const listaFavoritos = listasUsuario.favoritos.includes(anime.id);
+
+    function crearCabecera() {
+        const generosHTML = anime.generos.map(etiqueta =>
+            `<a href="catalogo?categoria=${etiqueta}" class="etiqueta-nueva">${etiqueta}</a>`
         ).join('');
 
         return `
-            <div class="serie-hero-container">
-                <div class="serie-hero-bg" style="background-image: url('${anime.imagen}');"></div>
-                <div class="serie-hero-gradient"></div>
+            <div class="contenedor-portada-serie">
+                <div class="fondo-portada-serie" style="background-image: url('${anime.imagen}');"></div>
+                <div class="degradado-portada-serie"></div>
                 
-                <div class="serie-main-info">
-                    <div class="serie-poster-new">
+                <div class="informacion-principal-serie">
+                    <div class="poster-serie">
                         <img src="${anime.imagen}" alt="${anime.titulo}">
                     </div>
-                    <div class="serie-details-new">
-                        <h1>${anime.titulo} <span style="font-size: 1.5rem; color: var(--text-muted); font-weight: 500;">${anime.subtitulo || ''}</span></h1>
-                        <div class="serie-meta">
+                    <div class="detalles-serie">
+                        <h1>${anime.titulo} <span style="font-size: 1.5rem; color: var(--texto-secundario); font-weight: 500;">${anime.subtitulo || ''}</span></h1>
+                        <div class="datos-serie">
                             <span>${anime.tipo || 'TV Anime'}</span> &bull; 
                             <span>${anime.año}</span> &bull; 
                             <span>${anime.estado}</span>
                         </div>
-                        <div class="serie-tags-new">${etiquetasHTML}</div>
-                        <p class="serie-synopsis-new">${anime.sinopsis}</p>
+                        <div class="generos-serie">${generosHTML}</div>
+                        <p class="sinopsis-serie">${anime.sinopsis}</p>
 
-                        <div class="serie-action-bar">        
-                            <a href="${anime.trailer || '#'}" target="_blank" class="btn-action btn-trailer">
+                        <div class="acciones-serie">        
+                            <a href="${anime.trailer || '#'}" target="_blank" class="btn-trailer">
                                 <i class="ph ph-play"></i> Tráiler
                             </a>
                             
-                            <select id="lista-select" class="btn-action select-lista">
+                            <select id="lista-select" class="boton-accion selector-lista">
                                 <option value="">+ Agregar a lista</option>
                                 <option value="viendo">Viendo</option>
                                 <option value="pendiente">Pendiente</option>
@@ -57,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <option value="eliminar">Eliminar de la lista</option>
                             </select>
 
-                            <button id="btn-fav" class="btn-action btn-icon-only ${estaEnFavoritos ? 'active-fav' : ''}">
-                                <i class="ph ${estaEnFavoritos ? 'ph-heart-fill' : 'ph-heart'}"></i>
+                            <button id="btn-fav" class="boton-accion boton-solo-icono ${listaFavoritos ? 'favorito-activo' : ''}">
+                                <i class="ph ${listaFavoritos ? 'ph-heart-fill' : 'ph-heart'}"></i>
                             </button>
                             
-                            <button id="btn-share" class="btn-action btn-icon-only">
+                            <button id="btn-share" class="boton-accion boton-solo-icono">
                                 <i class="ph ph-share-network"></i>
                             </button>
                         </div>
@@ -71,24 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    function crearRelacionadosHTML() {
+    function crearRelaciones() {
         if (!anime.relacionados || anime.relacionados.length === 0) return '';
 
         let listaRelacionados = [...anime.relacionados];
         const ordenTipos = { "Precuela": 1, "Secuela": 2, "Película": 3, "Alternativa": 4, "Otro": 5 };
         listaRelacionados.sort((a, b) => (ordenTipos[a.tipo] || 99) - (ordenTipos[b.tipo] || 99));
 
-        let html = `<section class="related-section">
+        let html = `<section class="seccion-relacionados">
                         <h2>Relacionados</h2>
-                        <div class="related-timeline">`;
+                        <div class="tiempo-relaciones">`;
 
         listaRelacionados.forEach(rel => {
             html += `
-                <div class="timeline-item">
-                    <div class="timeline-year">${rel.año}</div>
-                    <a href="serie?id=${rel.id}" class="related-card-horizontal">
+                <div class="linea-tiempo">
+                    <div class="anio-tiempo">${rel.año}</div>
+                    <a href="serie?id=${rel.id}" class="relacion-horizontal">
                         <img src="${rel.imagen}" alt="${rel.titulo}">
-                        <div class="rel-info-horizontal">
+                        <div class="info-relacion">
                             <h4>${rel.titulo}</h4>
                             <span>${rel.tipo}</span>
                         </div>
@@ -101,56 +103,56 @@ document.addEventListener('DOMContentLoaded', () => {
         return html;
     }
 
-    function crearEpisodiosHTML() {
+    function crearEpisodios() {
         if (!anime.temporadas || anime.temporadas.length === 0) return '<p>No hay episodios disponibles.</p>';
 
-        let todosLosEps = anime.temporadas[0].episodios;
-        let epsFiltrados = todosLosEps.filter(ep => 
-            ep.titulo.toLowerCase().includes(textoBusqueda.toLowerCase()) || 
+        let allEpisodios = anime.temporadas[0].episodios;
+        let episodiosFiltrados = allEpisodios.filter(ep =>
+            ep.titulo.toLowerCase().includes(textoBusqueda.toLowerCase()) ||
             ep.id.toString() === textoBusqueda
         );
 
-        if (epsInvertidos) epsFiltrados.reverse();
+        if (episodiosInvertidos) episodiosFiltrados.reverse();
 
         let html = `
-            <div class="episodes-header">
+            <div class="cabecera-episodios">
                 <h2>Episodios</h2>
-                <div class="ep-filters">
-                    <div class="search-ep-box">
+                <div class="filtros-episodio">
+                    <div class="caja-busqueda-episodios">
                         <i class="ph ph-magnifying-glass"></i>
-                        <input type="text" id="search-ep-input" placeholder="Episodios" value="${textoBusqueda}">
-                        ${textoBusqueda ? `<button id="clear-search" style="background:none; border:none; color:var(--text-muted); cursor:pointer;"><i class="ph ph-x"></i></button>` : ''}
+                        <input type="text" id="busqueda-ep" placeholder="Episodios" value="${textoBusqueda}">
+                        ${textoBusqueda ? `<button id="cerrar-busqueda" style="background:none; border:none; color:var(--texto-secundario); cursor:pointer;"><i class="ph ph-x"></i></button>` : ''}
                     </div>
-                    <button id="btn-order-eps" class="btn-filter" title="Invertir orden">
+                    <button id="btn-ordenar-ep" class="btn-filter" title="Invertir orden">
                         <i class="ph ph-arrows-down-up"></i>
                     </button>
                 </div>
             </div>
-            <div class="episodes-grid">
+            <div class="celda-episodios">
         `;
 
-        if (epsFiltrados.length === 0) {
-            html += `<p style="grid-column: 1/-1; color: var(--text-muted); padding: 1rem 0;">No se encontraron episodios.</p>`;
+        if (episodiosFiltrados.length === 0) {
+            html += `<p style="grid-column: 1/-1; color: var(--texto-secundario); padding: 1rem 0;">No se encontraron episodios.</p>`;
         } else {
-            epsFiltrados.forEach(ep => {
-                const isVisto = vistos.includes(ep.id);
-                const checkClass = isVisto ? 'is-watched' : '';
+            episodiosFiltrados.forEach(ep => {
+                const estaVisto = vistos.includes(ep.id);
+                const claseVerificado = estaVisto ? 'esta-visto' : '';
 
                 html += `
-                    <div class="episode-modern-card-wrapper">
-                        <a href="episodio?id=${anime.id}&ep=${ep.id}" class="episode-card">
-                            <div class="episode-thumbnail">
+                    <div class="contenedor-tarjeta-moderna-episodio">
+                        <a href="episodio?id=${anime.id}&ep=${ep.id}" class="tarjeta-episodio">
+                            <div class="miniatura-episodio">
                                 <img src="${ep.imagen || anime.imagen}" alt="${ep.titulo}">
-                                <div class="play-overlay">
-                                    <div class="play-btn">▶</div>
+                                <div class="superposicion-reproduccion">
+                                    <div class="btn-play">▶</div>
                                 </div>
-                                <div class="ep-badge">Episodio ${ep.id}</div>
+                                <div class="insg-ep">Episodio ${ep.id}</div>
                             </div>
-                            <div class="episode-info">
-                                <h3 class="ep-title">${ep.titulo}</h3>
+                            <div class="info-ep">
+                                <h3 class="titulo-episodio">${ep.titulo}</h3>
                             </div>
                         </a>
-                        <button class="btn-mark-watched ${checkClass}" data-ep-id="${ep.id}" title="Marcar como visto">
+                        <button class="boton-marcar-visto ${claseVerificado}" data-id-episodio="${ep.id}" title="Marcar como visto">
                             <i class="ph ph-check-circle"></i>
                             <i class="ph ph-eye"></i>
                         </button>
@@ -158,78 +160,78 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             });
         }
-        
+
         html += `</div>`;
         return html;
     }
 
-    function renderizarTodo() {
-        container.innerHTML = `
-            ${crearCabeceraHTML()}
-            ${crearRelacionadosHTML()}
+    function procesarTodo() {
+        contenedor.innerHTML = `
+            ${crearCabecera()}
+            ${crearRelaciones()}
             
-            <div class="serie-tabs">
-                <button class="tab-btn active" data-tab="episodios">Episodios</button>
-                <button class="tab-btn" data-tab="comentarios">Comentarios</button>
+            <div class="pestanas-serie">
+                <button class="boton-pestana activo" data-pestana="episodios">Episodios</button>
+                <button class="boton-pestana" data-pestana="comentarios">Comentarios</button>
             </div>
             
             <div id="tab-content">
-                ${crearEpisodiosHTML()}
+                ${crearEpisodios()}
             </div>
         `;
-        
-        bindEvents();
+
+        asociarEventos();
     }
 
-    function bindEvents() {
-        document.getElementById('btn-order-eps')?.addEventListener('click', () => {
-            epsInvertidos = !epsInvertidos;
-            document.getElementById('tab-content').innerHTML = crearEpisodiosHTML();
-            bindEvents();
+    function asociarEventos() {
+        document.getElementById('btn-ordenar-ep')?.addEventListener('click', () => {
+            episodiosInvertidos = !episodiosInvertidos;
+            document.getElementById('tab-content').innerHTML = crearEpisodios();
+            asociarEventos();
         });
 
-        document.getElementById('search-ep-input')?.addEventListener('input', (e) => {
+        document.getElementById('busqueda-ep')?.addEventListener('input', (e) => {
             textoBusqueda = e.target.value;
-            document.getElementById('tab-content').innerHTML = crearEpisodiosHTML();
-            bindEvents();
-            const input = document.getElementById('search-ep-input');
-            if(input) {
-                input.focus();
-                input.setSelectionRange(textoBusqueda.length, textoBusqueda.length);
+            document.getElementById('tab-content').innerHTML = crearEpisodios();
+            asociarEventos();
+            const entrada = document.getElementById('busqueda-ep');
+            if (entrada) {
+                entrada.focus();
+                entrada.setSelectionRange(textoBusqueda.length, textoBusqueda.length);
             }
         });
 
-        document.getElementById('clear-search')?.addEventListener('click', () => {
+        document.getElementById('cerrar-busqueda')?.addEventListener('click', () => {
             textoBusqueda = "";
-            document.getElementById('tab-content').innerHTML = crearEpisodiosHTML();
-            bindEvents();
+            document.getElementById('tab-content').innerHTML = crearEpisodios();
+            asociarEventos();
         });
 
-        document.querySelectorAll('.btn-mark-watched').forEach(btn => {
+        document.querySelectorAll('.boton-marcar-visto').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                const epId = parseInt(btn.dataset.epId);
-                
-                if (vistos.includes(epId)) {
-                    vistos = vistos.filter(id => id !== epId);
-                    btn.classList.remove('is-watched');
+                const idEpisodio = parseInt(btn.dataset.idEpisodio);
+
+                if (vistos.includes(idEpisodio)) {
+                    vistos = vistos.filter(id => id !== idEpisodio);
+                    btn.classList.remove('esta-visto');
                 } else {
-                    vistos.push(epId);
-                    btn.classList.add('is-watched');
+                    vistos.push(idEpisodio);
+                    btn.classList.add('esta-visto');
                 }
-                
+
                 localStorage.setItem(`vistos_${anime.id}`, JSON.stringify(vistos));
             });
         });
 
-        document.querySelectorAll('.tab-btn').forEach(btn => {
+        document.querySelectorAll('.boton-pestana').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                if (btn.dataset.tab === 'episodios') {
-                    document.getElementById('tab-content').innerHTML = crearEpisodiosHTML();
-                    bindEvents();
+                document.querySelectorAll('.boton-pestana').forEach(b => b.classList.remove('activo'));
+                btn.classList.add('activo');
+
+                if (btn.dataset.pestana === 'episodios') {
+                    document.getElementById('tab-content').innerHTML = crearEpisodios();
+                    asociarEventos();
                 } else {
                     document.getElementById('tab-content').innerHTML = `
                         <div class="comments-placeholder">
@@ -245,32 +247,32 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('focus', () => {
         setTimeout(() => {
             vistos = JSON.parse(localStorage.getItem(`vistos_${anime.id}`)) || [];
-            const activeTab = document.querySelector('.tab-btn.active');
-            if (activeTab && activeTab.dataset.tab === 'episodios') {
-                document.getElementById('tab-content').innerHTML = crearEpisodiosHTML();
-                bindEvents();
+            const pestanaActiva = document.querySelector('.boton-pestana.activo');
+            if (pestanaActiva && pestanaActiva.dataset.pestana === 'episodios') {
+                document.getElementById('tab-content').innerHTML = crearEpisodios();
+                asociarEventos();
             }
         }, 100);
     });
 
-    renderizarTodo();
+    procesarTodo();
 
-    document.getElementById('btn-fav').addEventListener('click', function() {
-        const favs = JSON.parse(localStorage.getItem('listasKoryanime'))?.favoritos || [];
-        const index = favs.indexOf(anime.id);
-        if (index > -1) {
-            favs.splice(index, 1);
-            this.classList.remove('active-fav');
+    document.getElementById('btn-fav').addEventListener('click', function () {
+        const favoritos = JSON.parse(localStorage.getItem('listasKoryanime'))?.favoritos || [];
+        const indice = favoritos.indexOf(anime.id);
+        if (indice > -1) {
+            favoritos.splice(indice, 1);
+            this.classList.remove('favorito-activo');
             this.innerHTML = `<i class="ph ph-heart"></i>`;
         } else {
-            favs.push(anime.id);
-            this.classList.add('active-fav');
+            favoritos.push(anime.id);
+            this.classList.add('favorito-activo');
             this.innerHTML = `<i class="ph ph-heart-fill"></i>`;
         }
-        localStorage.setItem('listasKoryanime', JSON.stringify({ favoritos: favs }));
+        localStorage.setItem('listasKoryanime', JSON.stringify({ favoritos: favoritos }));
     });
 
-    document.getElementById('lista-select').addEventListener('change', function() {
+    document.getElementById('lista-select').addEventListener('change', function () {
         if (this.value === 'eliminar') {
             alert("Eliminado de todas las listas");
             this.value = "";
