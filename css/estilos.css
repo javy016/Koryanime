@@ -848,14 +848,38 @@ body:not(.tema-oscuro) .superposicion-portada {
     border-color: #4b5563;
 }
 
+.btn-trailer,
 .boton-trailer {
     background-color: #ffffff;
     color: #000000;
-    border: none;
+    border: 1px solid #ffffff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
+.btn-trailer i,
+.boton-trailer i {
+    color: #000000;
+}
+
+.btn-trailer:hover,
 .boton-trailer:hover {
     background-color: #e5e7eb;
+    border-color: #e5e7eb;
+    color: #000000;
+}
+
+.btn-trailer:hover i,
+.boton-trailer:hover i {
+    color: #000000;
 }
 
 .boton-solo-icono {
