@@ -3,11 +3,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const alternarTema = document.getElementById('alternar-tema');
+    const alternarTema = document.getElementById('cambiar-tema');
     const cuerpoPagina = document.body;
-    const logoWeb = document.getElementById('logotipo-koryanime');
-    const iconoSol = document.getElementById('icono-sol');
-    const iconoLuna = document.getElementById('icono-luna');
+    const logoWeb = document.getElementById('logotipo');
+    const iconoSol = document.getElementById('ic-sol');
+    const iconoLuna = document.getElementById('ic-luna');
 
     if (alternarTema) {
         // Detecta si estamos en la subcarpeta 
