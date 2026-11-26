@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    document.title = `${anime.titulo} ${anime.subtitulo ? '- ' + anime.subtitulo : ''} - Koryanime`;
+    document.title = `${anime.titulo} ${anime.subtitulo ? '- ' + anime.subtitulo : ''} `;
 
     let vistos = JSON.parse(localStorage.getItem(`vistos_${anime.id}`)) || [];
     let episodiosInvertidos = false;
