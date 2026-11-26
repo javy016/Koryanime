@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const marcoVideo = document.getElementById('reproductor-video');
     if (marcoVideo) {
-        marcoVideo.src = episodioActual.videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0"; // Cambiar video
+        marcoVideo.src = episodioActual.videoUrl || "https://www.youtube.com/embed/o-xXCYfxIQg?si=iavR2L8uawn1LIsz"; // Cambiar video
     }
 
     const tituloLateral = document.getElementById('tit-ep-lateral');
