@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        const temaActual = localStorage.getItem('theme');
+        const temaActual = localStorage.getItem('tema');
 
         if (temaActual === 'dark') {
             cuerpoPagina.classList.add('tema-oscuro');
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             actualizarLogotipo(true);
             if (iconoSol) iconoSol.classList.add('activo');
             if (iconoLuna) iconoLuna.classList.remove('activo');
-            if (!temaActual) localStorage.setItem('theme', 'light');
+            if (!temaActual) localStorage.setItem('tema', 'light');
         }
 
         alternarTema.addEventListener('click', () => {
@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (esOscuro) {
                 if (iconoSol) iconoSol.classList.remove('activo');
                 if (iconoLuna) iconoLuna.classList.add('activo');
-                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('tema', 'dark');
             } else {
                 if (iconoSol) iconoSol.classList.add('activo');
                 if (iconoLuna) iconoLuna.classList.remove('activo');
-                localStorage.setItem('theme', 'light');
+                localStorage.setItem('tema', 'light');
             }
         });
     }
