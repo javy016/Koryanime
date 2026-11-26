@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const enSubcarpeta = window.location.pathname.includes('/webs/');
         const rutaLogos = enSubcarpeta ? '../Imagenes/logos/' : './Imagenes/logos/';
 
-        function actualizarLogotipo(esTemaClaro) {
+        function actualizarLogotipo(temaClaro) {
             if (logoWeb) {
-                logoWeb.src = esTemaClaro
+                logoWeb.src = temaClaro
                     ? rutaLogos + 'logo_oscuro.png'
                     : rutaLogos + 'logo_claro.png';
             }
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const temaActual = localStorage.getItem('tema');
 
-        if (temaActual === 'dark') {
+        if (temaActual === 'oscuro') {
             cuerpoPagina.classList.add('tema-oscuro');
             actualizarLogotipo(false);
             if (iconoSol) iconoSol.classList.remove('activo');
@@ -34,24 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
             actualizarLogotipo(true);
             if (iconoSol) iconoSol.classList.add('activo');
             if (iconoLuna) iconoLuna.classList.remove('activo');
-            if (!temaActual) localStorage.setItem('tema', 'light');
+            if (!temaActual) localStorage.setItem('tema', 'claro');
         }
 
         alternarTema.addEventListener('click', () => {
             cuerpoPagina.classList.toggle('tema-oscuro');
-            const esOscuro = cuerpoPagina.classList.contains('tema-oscuro');
-            const esClaro = !esOscuro;
+            const oscuro = cuerpoPagina.classList.contains('tema-oscuro');
+            const claro = !oscuro;
 
-            actualizarLogotipo(esClaro);
+            actualizarLogotipo(claro);
 
-            if (esOscuro) {
+            if (oscuro) {
                 if (iconoSol) iconoSol.classList.remove('activo');
                 if (iconoLuna) iconoLuna.classList.add('activo');
-                localStorage.setItem('tema', 'dark');
+                localStorage.setItem('tema', 'oscuro');
             } else {
                 if (iconoSol) iconoSol.classList.add('activo');
                 if (iconoLuna) iconoLuna.classList.remove('activo');
-                localStorage.setItem('tema', 'light');
+                localStorage.setItem('tema', 'claro');
             }
         });
     }

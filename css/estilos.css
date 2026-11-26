@@ -943,12 +943,12 @@ body.tema-oscuro .detalles-serie h1 {
 
 body.tema-oscuro .boton-accion.selector-lista,
 body.tema-oscuro .selector-lista {
-    color-scheme: dark;
+    color-scheme: oscuro;
 }
 
 body:not(.tema-oscuro) .boton-accion.selector-lista,
 body:not(.tema-oscuro) .selector-lista {
-    color-scheme: light;
+    color-scheme: claro;
 }
 
 .pestanas-serie {
